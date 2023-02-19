@@ -2,92 +2,106 @@
 
 ## Project Requirement
 
-![This is an image](./pics/requirement.png)
+![Alternative Image](./pics/requirement.png)
 
 ## Tools:
 
-- GCP CLI
+- GCP CLI (Cloud Provider)
 - Terraform (IaC)
 - Docker (Containerization Application)
 
 ## How to Use:
 
-### Local Steps:
+### Installation Guide:
 
-- 1. Download or clone the repository to your local machine.
-- 2. Install gcloud CLI, Terraform, and Docker on your local machine if you haven't already done so.
-- 3. Authenticate to your user by running the command "gcloud init" and follow the instructions to log in to your Google Cloud Platform account and select the project you want to use
-- 4. Navigate to the Application directory in the repository and build the app using Docker by running the command docker build -t <repository host>/<project id>/<image name>:<tag>. Make sure to replace the placeholders with your own values.
-- 5. Navigate to the Deployment directory and make the necessary changes to the AppDeployment.yaml file, specifically the image source, to match the image you built in step 4
+1. Download or clone the repository to your local machine.
 
-### Cloud Steps:
+2. Install gcloud CLI, Terraform, and Docker on your local machine if you haven't already done so.
 
-- run `gcloud compute ssh --zone "<your zone>" "my-instance" --tunnel-through-iap --project "<you project name>"` to ssh into the instance
-- install kubectl and gke-gcloud-auth-plugin by running
+3. Authenticate to your user by running the command "gcloud init" and follow the instructions to log in to your Google Cloud Platform account and select the project you want to use
 
-  ```
-  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-  sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-  sudo apt-get install google-cloud-sdk-gke-gcloud-auth-plugin
-  ```
+4. Navigate to the Application directory in the repository and build the app using Docker by running the command \
+`docker build -t <repository host>/<project id>/<image name>:<tag>` \
+Make sure to replace the placeholders with your own values.
 
-- After installing the tools on the instance run
+5. Navigate to the k8s-Deployment directory and make the necessary changes to the AppDeployment.yaml file, specifically the image source, to match the image you built in step 4
 
-  ```
-  gcloud container clusters get-credentials my-gke --region <your region> --project <your project name>
-  ```
+6. Navigate to the Terraform directory and initialize it by running the command "terraform init"
 
-- Copy the content of the Deployment diorectory into the instance
-- run `kubectl apply -f deply-demo-app.yml` & `Kubectl apply -f svc-demo-app.yml`
+7. Make the ncessary changes in the provider.tf file, specifically the project name and region, to match your own project settings
+
+8. Run the command "terraform validate" to validate your terraform code , then "terraform plan" to review the infrastructure changes that
+terraform will apply.
+
+9. After reviewing the changes, run the command "terraform apply" to apply the changes to your infrastructure
+
+Note: this guide assumes that you have a basic understanding of Docker, Terraform, and GCP Platform.
+  
+  
+  
+  
+### Access VM:
+1. To ssh into the vm-instance run this command \
+`gcloud compute ssh --zone "<your zone>" "my-instance" --tunnel-through-iap --project "<you project name>"`
+
+
+- Note: You Will find that the kubectl already installed using script created by terraform. no need to install kubectl manually
+
+2. To change the default k8s cluster run this command \
+`gcloud container clusters get-credentials my-gke --region <your region> --project <your project name>`
+
+
+3. Copy the content of the k8s-Deployment directory into the vm-instance
+- run `kubectl apply -f AppDeployment.yml` & `Kubectl apply -f AppSVC.yml`
 - run `Kubectl get svc` to get the service ip
 
 ## Pictures:
 
 ### Terraform Apply
 
-![This is an image](./Pics/terraform_apply.png)
+![Alternative Image](./pics/terraform-apply.png)
 
 ### GCP Home
 
-![This is an image](./Pics/gcp_home.png)
+![Alternative Image](./pics/welcome-dashboard.png)
 
 ### GCP VPC
 
-![This is an image](./Pics/gcp_vpc.png)
+![Alternative Image](./pics/vpc.png)
 
 ### GCP NAT
 
-![This is an image](./Pics/gcp_nat.png)
+![Alternative Image](./pics/nat.png)
 
 ### GCP IAM
 
-![This is an image](./Pics/gcp_iam.png)
+![Alternative Image](./pics/GCP-IAM.png)
 
 ### GCP VMs
 
-![This is an image](./Pics/gcp_vms.png)
+![Alternative Image](./pics/vm-instances.png)
 
 ### GCP GKE
 
-![This is an image](./Pics/gcp_gke.png)
+![Alternative Image](./pics/k8s-cluster.png)
 
 ### GCP Load Balancer
 
-![This is an image](./Pics/gcp_loadbalancer.png)
-![This is an image](./Pics/gcp_loadbalancer_view.png)
+![Alternative Image](./pics/loadbalancer.png)
 
 ### GCP GCR
 
-![This is an image](./Pics/gcp_gcr.png)
-![This is an image](./Pics/gcp_gcr_view.png)
-![This is an image](./Pics/gcp_gcr_view_image.png)
+![Alternative Image](./pics/gcr.png)
+![Alternative Image](./pics/gcr-2.png)
 
-### SSH into Instance
+### VM Pods
 
-![This is an image](./Pics/instance_kubectl.png)
-![This is an image](./Pics/instance_gcloud_plugin.png)
-![This is an image](./Pics/instance_deployment_content.png)
+![Alternative Image](./pics/vm-pods.png)
+
+### VM SVC
+
+![Alternative Image](./pics/vm-svc.png)
 
 ### Access the Application
 
-![This is an image](./Pics/access_app.png)
+![Alternative Image](./Pics/access_app.png)
