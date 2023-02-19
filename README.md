@@ -6,26 +6,19 @@
 
 ## Tools:
 
-- gcloud CLI
-- Terraform
-- Docker
+- GCP CLI
+- Terraform (IaC)
+- Docker (Containerization Application)
 
 ## How to Use:
 
 ### Local Steps:
 
-- Clone the repository
-- Make sure you have installed gcloud CLI , Terraform and Docker
-- Authenticate your user by running
-  `gcloud init`
-- Navegate to the Application diorectory and build the app using docker by running:
-  `docker build -t <repository host>/<project id>/<image name>:<image tag> .`
-- Navegate to the Deployment diorectory and make the nessasery change to the deploy-demo-app.yml (The image source)
-- Navegate to the Terraform diorectory and initialize it by running
-  `terraform init`
-- Make the nessasery change in the provider.tf file (project name, region)
-- Run `terraform plan` to review the infrastucure
-- After reviewing the infrastucure run `terraform apply`
+- 1. Download or clone the repository to your local machine.
+- 2. Install gcloud CLI, Terraform, and Docker on your local machine if you haven't already done so.
+- 3. Authenticate to your user by running the command "gcloud init" and follow the instructions to log in to your Google Cloud Platform account and select the project you want to use
+- 4. Navigate to the Application directory in the repository and build the app using Docker by running the command docker build -t <repository host>/<project id>/<image name>:<tag>. Make sure to replace the placeholders with your own values.
+- 5. Navigate to the Deployment directory and make the necessary changes to the AppDeployment.yaml file, specifically the image source, to match the image you built in step 4
 
 ### Cloud Steps:
 
