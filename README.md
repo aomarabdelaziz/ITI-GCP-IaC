@@ -104,4 +104,4 @@ Note: this guide assumes that you have a basic understanding of Docker, Terrafor
 
 ### Access the Application
 
-![Alternative Image](./Pics/access_app.png)
+![Alternative Image](./pics/app-running.png)
