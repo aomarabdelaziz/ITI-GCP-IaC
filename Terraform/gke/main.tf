@@ -1,6 +1,5 @@
 /*
-  This code is written in HashiCorp Configuration Language (HCL) and uses Terraform to create a Google Kubernetes Engine (GKE) cluster 
-  and a node pool within the cluster. Let's break it down into two resources:
+  This Terraform code to create a Google Kubernetes Engine (GKE) cluster and a node pool within the cluster.
 */
 
 // google_container_cluster: This resource creates a GKE cluster with the following properties:
